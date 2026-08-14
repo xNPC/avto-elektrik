@@ -10,13 +10,17 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/landing.css',
                 'resources/js/app.js',
                 'resources/js/passkeys.js',
             ],
             refresh: true,
             fonts: [
-                bunny('Instrument Sans', {
-                    weights: [400, 500, 600],
+                bunny('Manrope', {
+                    weights: [400, 500, 600, 700],
+                }),
+                bunny('Unbounded', {
+                    weights: [500, 600, 700, 800],
                 }),
             ],
         }),

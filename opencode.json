@@ -1,0 +1,23 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "project": {
+        "name": "avto-elektrik",
+        "ignore": [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/build/**",
+            "**/.git/**",
+            "**/.next/**",
+            "**/.nuxt/**",
+            "**/package-lock.json",
+            "**/yarn.lock",
+            "**/pnpm-lock.yaml",
+            "*.log",
+            "*.mp4"
+        ]
+    },
+    "agent": {
+        "maxDepth": 3,
+        "maxFilesToScan": 20
+    }
+}
