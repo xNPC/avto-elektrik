@@ -36,7 +36,7 @@ class LandingPageTest extends TestCase
 
         if (config('landing.experience_years')) {
             $response->assertSee('лет в автоэлектрике');
-            $response->assertSee((string) config('landing.experience_years'));
+            $response->assertSee(config('landing.experience_years').'+');
         }
 
         if (count(config('landing.suburb')) > 0) {

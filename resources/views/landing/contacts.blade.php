@@ -94,7 +94,7 @@
                             href="{{ config('landing.max') }}"
                             target="_blank"
                             rel="noopener"
-                            class="flex items-center justify-center gap-2.5 rounded-xl border border-violet-400/40 px-6 py-4 text-base font-semibold text-violet-300 transition hover:bg-violet-400 hover:text-zinc-950"
+                            class="flex items-center justify-center gap-2.5 rounded-xl border border-[#471AFF]/40 px-6 py-4 text-base font-semibold text-[#b9a9ff] transition hover:bg-[#471AFF] hover:text-white"
                         >
                             <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>

@@ -16,7 +16,7 @@
                 </div>
                 @if (config('landing.experience_years'))
                     <div class="mt-5 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 text-center">
-                        <p class="font-display text-4xl font-bold text-amber-400">{{ config('landing.experience_years') }}</p>
+                        <p class="font-display text-4xl font-bold text-amber-400">{{ config('landing.experience_years') }}+</p>
                         <p class="mt-1 text-sm text-amber-300">лет в автоэлектрике</p>
                     </div>
                 @endif
