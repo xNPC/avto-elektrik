@@ -12,7 +12,7 @@
                 <figure data-reveal class="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/60 shadow-lg shadow-black/20">
                     <img
                         src="{{ asset('images/works/'.$work['src']).'?v='.filemtime(public_path('images/works/'.$work['src'])) }}"
-                        alt="Выполненная работа — автоэлектрик в Кемерово"
+                        alt="Выполненная работа №{{ $loop->iteration }} — автоэлектрик в Кемерово"
                         width="{{ $work['w'] }}"
                         height="{{ $work['h'] }}"
                         loading="lazy"

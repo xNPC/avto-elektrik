@@ -10,11 +10,14 @@
         <link rel="canonical" href="{{ url('/') }}">
 
         <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url('/') }}">
         <meta property="og:title" content="{{ config('landing.title') }}">
         <meta property="og:description" content="{{ config('landing.description') }}">
         <meta property="og:locale" content="ru_RU">
         @if (config('landing.og_image'))
             <meta property="og:image" content="{{ url(config('landing.og_image')) }}">
+            <meta property="og:image:width" content="1200">
+            <meta property="og:image:height" content="630">
         @endif
 
         <meta name="geo.region" content="RU-KEM">
@@ -45,7 +48,9 @@
                 '@type' => 'AutoRepair',
                 'name' => config('landing.name'),
                 'description' => config('landing.description'),
-                'telephone' => config('landing.phone'),
+                'url' => url('/'),
+                'image' => config('landing.og_image') ? url(config('landing.og_image')) : null,
+                'telephone' => config('landing.phone_href'),
                 'priceRange' => '₽₽',
                 'areaServed' => config('landing.city'),
                 'address' => [
@@ -72,7 +77,7 @@
         @endphp
 
         <script type="application/ld+json">
-@json($landingSchema)
+@json(array_filter($landingSchema))
         </script>
     </head>
     <body id="top" class="bg-zinc-950 font-sans text-zinc-100 antialiased selection:bg-amber-400 selection:text-zinc-950">

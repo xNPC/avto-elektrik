@@ -10,6 +10,12 @@ Route::get('sitemap.xml', function () {
     ])->header('Content-Type', 'application/xml');
 });
 
+Route::get('robots.txt', function () {
+    return response()->view('robots', [
+        'sitemapUrl' => url('/sitemap.xml'),
+    ])->header('Content-Type', 'text/plain');
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });

@@ -48,6 +48,9 @@ class LandingPageTest extends TestCase
         $response->assertSee('application/ld+json');
         $response->assertSee('AutoRepair');
         $response->assertSee('geo.region');
+        $response->assertSee('"url":', false);
+        $response->assertSee('"image":', false);
+        $response->assertSee(config('landing.phone_href'));
     }
 
     public function test_landing_page_shows_reviews_carousel(): void
@@ -100,5 +103,14 @@ class LandingPageTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('urlset', false);
+    }
+
+    public function test_robots_txt_serves_production_sitemap_url(): void
+    {
+        $response = $this->get('/robots.txt');
+
+        $response->assertOk();
+        $response->assertSee('Disallow: /admin');
+        $response->assertSee('Sitemap: '.url('/sitemap.xml'));
     }
 }
