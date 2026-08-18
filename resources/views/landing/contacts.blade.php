@@ -77,18 +77,6 @@
                         </svg>
                         Написать в WhatsApp
                     </a>
-                    <a
-                        href="{{ config('landing.telegram') }}"
-                        target="_blank"
-                        rel="noopener"
-                        class="flex items-center justify-center gap-2.5 rounded-xl border border-sky-400/40 px-6 py-4 text-base font-semibold text-sky-300 transition hover:bg-sky-400 hover:text-zinc-950"
-                    >
-                        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="m22 2-7 20-4-9-9-4Z"/>
-                            <path d="M22 2 11 13"/>
-                        </svg>
-                        Написать в Telegram
-                    </a>
                     @if (config('landing.max'))
                         <a
                             href="{{ config('landing.max') }}"

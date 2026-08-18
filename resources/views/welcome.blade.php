@@ -59,7 +59,7 @@
                     'latitude' => config('landing.latitude'),
                     'longitude' => config('landing.longitude'),
                 ],
-                'openingHours' => 'Mo-Su 09:00-20:00',
+                'openingHours' => 'Mo-Su 08:00-20:00',
                 'makesOffer' => array_map(fn (array $service) => [
                     '@type' => 'Offer',
                     'itemOffered' => [
@@ -82,6 +82,7 @@
             @include('landing.hero')
             @include('landing.directions')
             @include('landing.services')
+            @include('landing.diagnostics')
             @include('landing.extras')
             @include('landing.about')
             @include('landing.areas')

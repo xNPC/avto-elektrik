@@ -1,3 +1,5 @@
+import './reviews-carousel';
+
 const revealElements = document.querySelectorAll('[data-reveal]');
 
 if (revealElements.length > 0 && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

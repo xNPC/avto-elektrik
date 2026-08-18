@@ -40,6 +40,15 @@
     animation: bolt-breathe 5s ease-in-out infinite;
 }
 
+/* Курсор перетаскивания на карусели отзывов (классы добавляет Embla) */
+[data-reviews-viewport].is-draggable {
+    cursor: grab;
+}
+
+[data-reviews-viewport].is-dragging {
+    cursor: grabbing;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     html {

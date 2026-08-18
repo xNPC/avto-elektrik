@@ -23,11 +23,7 @@ class LandingPageTest extends TestCase
         $response->assertSee('tel:'.config('landing.phone_href'));
         $response->assertSee(config('landing.phone'));
         $response->assertSee(config('landing.whatsapp'));
-        $response->assertSee(config('landing.telegram'));
-
-        if (config('landing.max')) {
-            $response->assertSee(config('landing.max'));
-        }
+        $response->assertSee(config('landing.max'));
     }
 
     public function test_landing_page_shows_experience_and_suburb(): void
@@ -52,6 +48,50 @@ class LandingPageTest extends TestCase
         $response->assertSee('application/ld+json');
         $response->assertSee('AutoRepair');
         $response->assertSee('geo.region');
+    }
+
+    public function test_landing_page_shows_reviews_carousel(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('data-reviews-carousel', false);
+
+        foreach (config('landing.reviews') as $review) {
+            $response->assertSee('images/reviews/'.$review['src']);
+        }
+    }
+
+    public function test_landing_page_shows_works(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('Примеры выполненных работ');
+
+        foreach (config('landing.works') as $work) {
+            $response->assertSee('images/works/'.$work['src']);
+        }
+    }
+
+    public function test_landing_page_shows_master_photo(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('images/'.config('landing.master_photo'));
+    }
+
+    public function test_landing_page_shows_diagnostics_section(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('Осциллограф');
+
+        foreach (config('landing.diagnostics') as $tool) {
+            $response->assertSee($tool['title']);
+        }
     }
 
     public function test_sitemap_is_served(): void

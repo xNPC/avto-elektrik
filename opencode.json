@@ -15,9 +15,5 @@
             "*.log",
             "*.mp4"
         ]
-    },
-    "agent": {
-        "maxDepth": 3,
-        "maxFilesToScan": 20
     }
 }

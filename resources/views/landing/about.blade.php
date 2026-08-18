@@ -5,15 +5,19 @@
 
         <div class="mt-12 grid items-start gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
             <div data-reveal class="lg:sticky lg:top-24">
-                <div class="grid aspect-[4/5] place-items-center rounded-3xl border-2 border-dashed border-zinc-800 bg-zinc-900/40">
-                    <span class="flex flex-col items-center gap-3 text-zinc-600">
-                        <svg class="size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                        <span class="text-sm">Ваше фото</span>
-                    </span>
-                </div>
+                @if (config('landing.master_photo'))
+                    <figure class="overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-xl shadow-black/30">
+                        <img
+                            src="{{ asset('images/'.config('landing.master_photo')).'?v='.filemtime(public_path('images/'.config('landing.master_photo'))) }}"
+                            alt="Мастер — частный автоэлектрик в Кемерово"
+                            width="1100"
+                            height="1375"
+                            loading="lazy"
+                            decoding="async"
+                            class="aspect-[4/5] w-full object-cover"
+                        >
+                    </figure>
+                @endif
                 @if (config('landing.experience_years'))
                     <div class="mt-5 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 text-center">
                         <p class="font-display text-4xl font-bold text-amber-400">{{ config('landing.experience_years') }}+</p>
@@ -79,7 +83,7 @@
                         </span>
                         <h3 class="mt-4 font-display text-base font-semibold text-white">Гарантия на работы</h3>
                         <p class="mt-2 text-sm leading-relaxed text-zinc-400">
-                            Даю гарантию на выполненные работы и установленное оборудование.
+                            Даю гарантию на выполненные работы.
                         </p>
                     </div>
 
