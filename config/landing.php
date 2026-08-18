@@ -69,7 +69,7 @@ return [
     | Коды верификации поисковых систем. Пустая строка — тег не выводится.
     | Яндекс.Вебмастер: https://webmaster.yandex.ru, Google Search Console.
     */
-    'yandex_verification' => '',
+    'yandex_verification' => '6bbcc5c156c23cb9',
     'google_verification' => '',
 
     /*
