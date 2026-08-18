@@ -1,0 +1,100 @@
+{
+  "_fonts-BMLXLaX9.css": {
+    "file": "assets/fonts-BMLXLaX9.css",
+    "src": "_fonts-BMLXLaX9.css"
+  },
+  "_manrope-400-normal-8tf8FM3T.woff": {
+    "file": "assets/manrope-400-normal-8tf8FM3T.woff",
+    "src": "_manrope-400-normal-8tf8FM3T.woff"
+  },
+  "_manrope-400-normal-PaqtzbVb.woff2": {
+    "file": "assets/manrope-400-normal-PaqtzbVb.woff2",
+    "src": "_manrope-400-normal-PaqtzbVb.woff2"
+  },
+  "_manrope-500-normal-BYYD-dBL.woff2": {
+    "file": "assets/manrope-500-normal-BYYD-dBL.woff2",
+    "src": "_manrope-500-normal-BYYD-dBL.woff2"
+  },
+  "_manrope-500-normal-DMZssgOp.woff": {
+    "file": "assets/manrope-500-normal-DMZssgOp.woff",
+    "src": "_manrope-500-normal-DMZssgOp.woff"
+  },
+  "_manrope-600-normal-4f0koTD-.woff2": {
+    "file": "assets/manrope-600-normal-4f0koTD-.woff2",
+    "src": "_manrope-600-normal-4f0koTD-.woff2"
+  },
+  "_manrope-600-normal-BqgrALkZ.woff": {
+    "file": "assets/manrope-600-normal-BqgrALkZ.woff",
+    "src": "_manrope-600-normal-BqgrALkZ.woff"
+  },
+  "_manrope-700-normal-BZp_XxE4.woff2": {
+    "file": "assets/manrope-700-normal-BZp_XxE4.woff2",
+    "src": "_manrope-700-normal-BZp_XxE4.woff2"
+  },
+  "_manrope-700-normal-DGRFkw-m.woff": {
+    "file": "assets/manrope-700-normal-DGRFkw-m.woff",
+    "src": "_manrope-700-normal-DGRFkw-m.woff"
+  },
+  "_unbounded-500-normal-4slEIF53.woff2": {
+    "file": "assets/unbounded-500-normal-4slEIF53.woff2",
+    "src": "_unbounded-500-normal-4slEIF53.woff2"
+  },
+  "_unbounded-500-normal-ZsrgWWU1.woff": {
+    "file": "assets/unbounded-500-normal-ZsrgWWU1.woff",
+    "src": "_unbounded-500-normal-ZsrgWWU1.woff"
+  },
+  "_unbounded-600-normal-BPdB_PEv.woff": {
+    "file": "assets/unbounded-600-normal-BPdB_PEv.woff",
+    "src": "_unbounded-600-normal-BPdB_PEv.woff"
+  },
+  "_unbounded-600-normal-oRSANpZr.woff2": {
+    "file": "assets/unbounded-600-normal-oRSANpZr.woff2",
+    "src": "_unbounded-600-normal-oRSANpZr.woff2"
+  },
+  "_unbounded-700-normal-CZtriu5h.woff": {
+    "file": "assets/unbounded-700-normal-CZtriu5h.woff",
+    "src": "_unbounded-700-normal-CZtriu5h.woff"
+  },
+  "_unbounded-700-normal-CaoNriVp.woff2": {
+    "file": "assets/unbounded-700-normal-CaoNriVp.woff2",
+    "src": "_unbounded-700-normal-CaoNriVp.woff2"
+  },
+  "_unbounded-800-normal-CN2Hxyoo.woff2": {
+    "file": "assets/unbounded-800-normal-CN2Hxyoo.woff2",
+    "src": "_unbounded-800-normal-CN2Hxyoo.woff2"
+  },
+  "_unbounded-800-normal-Cjred_zf.woff": {
+    "file": "assets/unbounded-800-normal-Cjred_zf.woff",
+    "src": "_unbounded-800-normal-Cjred_zf.woff"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-ChNpgxKR.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/landing.css": {
+    "file": "assets/landing-B8OM1snr.css",
+    "name": "landing",
+    "names": [
+      "landing.css"
+    ],
+    "src": "resources/css/landing.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-rjH2XFnX.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/passkeys.js": {
+    "file": "assets/passkeys-ZWACIUjA.js",
+    "name": "passkeys",
+    "src": "resources/js/passkeys.js",
+    "isEntry": true
+  }
+}
