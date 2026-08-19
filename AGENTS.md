@@ -28,9 +28,19 @@ Laravel 13 app ("Частный автоэлектрик", public site) with an 
 - Registration is disabled: `Features::registration()` removed from `config/fortify.php`; `resources/views/pages/auth/login.blade.php` guards the sign-up link with `@if (Route::has('register'))`.
 - `tests/Feature/LandingPageTest.php` asserts `/` loads, contact links, SEO markup and sitemap. Landing tests pass; the `composer test` gate is red only due to pre-existing Orchid↔starter-kit conflicts (see below).
 
+## Articles (`/stati`)
+
+- SEO section: `/stati` (list) + 3 articles (`ne-zavoditsya-avtomobil`, `bystro-razrazhaetsya-akkumulyator`, `diagnostika-elektrooborudovaniya`). Routes in `routes/web.php`: `Route::view('stati', ...)` + `foreach` over `config('landing.articles')` → `Route::view('stati/{slug}', ...)`.
+- Metadata (`title`, `description`, `published`) lives in `config/landing.php` (`articles` array); article **text lives in the blades** (`resources/views/articles/{slug}.blade.php`).
+- Views: `articles/layout.blade.php` (shell: head SEO, canonical/og/geo, Yandex verification + Metrika, JSON-LD `Article`, `@yield('content')`), `articles/index.blade.php` (cards grid), `articles/cta.blade.php` (CTA card). Sitemap includes `/stati` + article URLs (`lastmod` = `published`).
+- Header nav has a «Статьи» link; on inner pages the menu anchors must point to `url('/#…')` — blade uses `$isHome` to switch (see `landing/header.blade.php`).
+- CTA cards (`cta.blade.php`, bottom of `index.blade.php`): `mx-auto mt-20 max-w-xl` — **width intentionally matches the «Быстрая связь» card on the landing** (buttons ~512px, not full column width); phone + WhatsApp + MAX buttons (MAX guarded by `@if (config('landing.max'))`).
+- **Blade gotcha**: `@extends` passes ALL child-scope variables into the layout (via `get_defined_vars()`). The foreach var in `index.blade.php` is named `$articleMeta`, NOT `$article` — otherwise the layout receives the last article and renders it instead of the index.
+- Tests: `tests/Feature/ArticlePagesTest.php` — 3 tests (index page, article pages + SEO/JSON-LD, sitemap).
+
 ## Known broken state (pre-existing, not caused by the landing)
 
-- PHPUnit is **green** (33 passed / 11 skipped). Two-factor auth was **disabled** (removed `Features::twoFactorAuthentication()` from `config/fortify.php`) — the 2FA/security tests skip via `skipUnlessFortifyHas()`. The app's user-menu avatars no longer call `$user->initials()` (Flux derives initials from `name`) — do not reintroduce `initials()`/two-factor without adding the starter-kit methods to `App\Models\User`.
+- PHPUnit is **green** (36 passed / 11 skipped). Two-factor auth was **disabled** (removed `Features::twoFactorAuthentication()` from `config/fortify.php`) — the 2FA/security tests skip via `skipUnlessFortifyHas()`. The app's user-menu avatars no longer call `$user->initials()` (Flux derives initials from `name`) — do not reintroduce `initials()`/two-factor without adding the starter-kit methods to `App\Models\User`.
 - Pint/PHPStan still fail on the Orchid boilerplate (`app/Orchid/*`, `config/platform.php`, `app/Models/User.php`, migrations) — 68 PHPStan errors, all `missingType.*`/Orchid API mismatches. Do not touch as part of landing work.
 
 ## Orchid admin (`/admin`)
@@ -52,6 +62,7 @@ Laravel 13 app ("Частный автоэлектрик", public site) with an 
 - **Site is live**: `https://autoelektrik42.ru`, reg.ru Host-0 shared hosting, SSH path `/var/www/u3614515/data/www/autoelektrik42.ru` (document root → `public/`).
 - Repo: GitHub `xNPC/avto-elektrik`, branch `master`. SSH exists; Node **does not** exist on the server.
 - **Deploy flow**: run `npm run build` locally → commit `public/build` (committed assets, fonts bundled) → `git push` → on server `git pull`. `composer` is unreliable on the server — fallback: deploy bundle `C:\OSPanel\temp\PHP-8.5\default\opencode\avto-elektrik-deploy.zip` (already contains vendor, built `--no-dev`); unzip extracts into a top-level `avto-elektrik-deploy/` folder — move contents up or use `-d` carefully.
+- **Build lesson (learned the hard way)**: after adding ANY new Tailwind classes to blades you MUST run `npm run build` and commit `public/build` — otherwise the classes are missing on prod AND locally when `npm run dev` is not running (the stale committed CSS is served). Real case: articles were shipped without a rebuild → CTA block stuck to text (no `.mt-20`), lists lost bullets (no `.list-disc`), buttons cramped (no `.gap-*`); fixed by rebuild in `e761f10`.
 - `DEPLOY.md` at project root: full step-by-step deploy + prod `.env` template. Prod `.env`: `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL=https://autoelektrik42.ru`, `DB_HOST=localhost`, `SESSION/CACHE/QUEUE=database`. **Never commit `.env` or DB creds.**
 - Admin panel `/admin` (Orchid): admin user `admin@autoelektrik42.ru` exists on prod (password managed by owner, do not store here).
 - SEO config in `config/landing.php`: `yandex_verification = a3d345c5eb9bfea9`, `metrika_id = 111742357` (Yandex.Metrika, exact snippet in `welcome.blade.php`), `google_verification = ''` (still TODO), `og_image = /og-image.png`.
@@ -61,7 +72,8 @@ Laravel 13 app ("Частный автоэлектрик", public site) with an 
 
 ## Status & backlog
 
-- **Done**: landing + SEO pass (title, dynamic robots, JSON-LD url/image/E.164, og w/h, unique work alts), prod deployment, multi-size favicons, Yandex Metrika, Yandex verification code.
+- **Done**: landing + SEO pass (title, dynamic robots, JSON-LD url/image/E.164, og w/h, unique work alts), prod deployment, multi-size favicons, Yandex Metrika, Yandex verification code, `/stati` articles section (3 SEO articles + list page, JSON-LD Article, sitemap, tests).
+- **Deploy status**: server `git pull` has NOT been done for the articles/rebuild work — the next pull brings commits `91509f0` (favicons+Metrika), `e55b216` (Yandex verification), `8335c3f` (articles), `fe64b15` (CTA+MAX), `e761f10` (rebuild+CTA width). Prod currently lacks all of these.
 - **Known behavior**: Yandex initially built the snippet from a work photo alt («Выполненная работа №1 — автоэлектрик в Кемерово») — normalizes as the site matures; don't chase exact snippet control.
 - **Backlog (owner decisions needed)**:
   - `google_verification` code — user has to add site to Google Search Console and paste the code;
