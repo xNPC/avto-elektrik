@@ -34,7 +34,8 @@
         <script>document.documentElement.classList.add('js');</script>
 
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="icon" href="/favicon.ico" sizes="any">
+        <link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
         @fonts
@@ -79,6 +80,21 @@
         <script type="application/ld+json">
 @json(array_filter($landingSchema))
         </script>
+
+        @if (config('landing.metrika_id'))
+            <!-- Yandex.Metrika counter -->
+            <script type="text/javascript">
+                (function(m,e,t,r,i,k,a){
+                    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                    m[i].l=1*new Date();
+                    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+                })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id={{ config('landing.metrika_id') }}', 'ym');
+
+                ym({{ config('landing.metrika_id') }}, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+            </script>
+            <!-- /Yandex.Metrika counter -->
+        @endif
     </head>
     <body id="top" class="bg-zinc-950 font-sans text-zinc-100 antialiased selection:bg-amber-400 selection:text-zinc-950">
         @include('landing.header')

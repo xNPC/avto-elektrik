@@ -53,6 +53,16 @@ class LandingPageTest extends TestCase
         $response->assertSee(config('landing.phone_href'));
     }
 
+    public function test_landing_page_contains_metrika_counter_when_configured(): void
+    {
+        $response = $this->get('/');
+
+        if (config('landing.metrika_id')) {
+            $response->assertSee('mc.yandex.ru/metrika/tag.js?id='.config('landing.metrika_id'));
+            $response->assertSee("ym(".config('landing.metrika_id').", 'init'", false);
+        }
+    }
+
     public function test_landing_page_shows_reviews_carousel(): void
     {
         $response = $this->get('/');
