@@ -1,6 +1,7 @@
 <header class="sticky top-0 z-50 border-b border-white/5 bg-zinc-950/80 backdrop-blur-lg">
+    @php $isHome = request()->routeIs('home'); @endphp
     <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="#top" class="flex items-center gap-3">
+        <a href="{{ $isHome ? '#top' : url('/') }}" class="flex items-center gap-3">
             <span class="grid size-9 place-items-center rounded-lg bg-amber-400 text-zinc-950">
                 <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>
@@ -13,11 +14,12 @@
         </a>
 
         <nav class="hidden items-center gap-8 text-sm font-medium text-zinc-300 lg:flex">
-            <a href="#services" class="transition hover:text-amber-400">Услуги</a>
-            <a href="#about" class="transition hover:text-amber-400">Обо мне</a>
-            <a href="#areas" class="transition hover:text-amber-400">Районы</a>
-            <a href="#works" class="transition hover:text-amber-400">Работы</a>
-            <a href="#contacts" class="transition hover:text-amber-400">Контакты</a>
+            <a href="{{ $isHome ? '#services' : url('/#services') }}" class="transition hover:text-amber-400">Услуги</a>
+            <a href="{{ $isHome ? '#about' : url('/#about') }}" class="transition hover:text-amber-400">Обо мне</a>
+            <a href="{{ $isHome ? '#areas' : url('/#areas') }}" class="transition hover:text-amber-400">Районы</a>
+            <a href="{{ $isHome ? '#works' : url('/#works') }}" class="transition hover:text-amber-400">Работы</a>
+            <a href="{{ url('/stati') }}" class="transition hover:text-amber-400">Статьи</a>
+            <a href="{{ $isHome ? '#contacts' : url('/#contacts') }}" class="transition hover:text-amber-400">Контакты</a>
         </nav>
 
         <div class="flex items-center gap-3">
@@ -38,11 +40,12 @@
                     </svg>
                 </summary>
                 <div class="absolute right-0 mt-2 w-64 rounded-2xl border border-white/10 bg-zinc-900 p-2 shadow-2xl">
-                    <a href="#services" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Услуги</a>
-                    <a href="#about" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Обо мне</a>
-                    <a href="#areas" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Районы</a>
-                    <a href="#works" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Работы</a>
-                    <a href="#contacts" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Контакты</a>
+                    <a href="{{ $isHome ? '#services' : url('/#services') }}" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Услуги</a>
+                    <a href="{{ $isHome ? '#about' : url('/#about') }}" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Обо мне</a>
+                    <a href="{{ $isHome ? '#areas' : url('/#areas') }}" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Районы</a>
+                    <a href="{{ $isHome ? '#works' : url('/#works') }}" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Работы</a>
+                    <a href="{{ url('/stati') }}" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Статьи</a>
+                    <a href="{{ $isHome ? '#contacts' : url('/#contacts') }}" class="block rounded-lg px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-amber-400">Контакты</a>
                     <div class="my-2 border-t border-white/10"></div>
                     <a href="tel:{{ config('landing.phone_href') }}" class="block rounded-lg bg-amber-400 px-4 py-2.5 text-center text-sm font-semibold text-zinc-950 transition hover:bg-amber-300">
                         {{ config('landing.phone') }}

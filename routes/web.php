@@ -16,6 +16,15 @@ Route::get('robots.txt', function () {
     ])->header('Content-Type', 'text/plain');
 });
 
+Route::view('stati', 'articles.index', ['article' => null])->name('articles.index');
+
+foreach ((array) config('landing.articles') as $slug => $article) {
+    $slug = (string) $slug;
+    Route::view('stati/'.$slug, 'articles.'.$slug, [
+        'article' => $article,
+    ])->name('articles.'.$slug);
+}
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });
