@@ -1,4 +1,4 @@
-<aside class="mt-20 rounded-3xl border border-white/10 bg-zinc-900/60 p-8 sm:p-10">
+<aside class="mx-auto mt-20 max-w-xl rounded-3xl border border-white/10 bg-zinc-900/60 p-8 sm:p-10">
     <h2 class="font-display text-xl font-bold text-white">Нужна помощь с вашей машиной?</h2>
     <p class="mt-2 text-sm text-zinc-400">
         Позвоните или напишите в мессенджер — подскажу по неисправности и договоримся о выезде по {{ config('landing.city') }}.
