@@ -1,4 +1,4 @@
-<aside class="mt-14 rounded-3xl border border-white/10 bg-zinc-900/60 p-8 sm:p-10">
+<aside class="mt-20 rounded-3xl border border-white/10 bg-zinc-900/60 p-8 sm:p-10">
     <h2 class="font-display text-xl font-bold text-white">Нужна помощь с вашей машиной?</h2>
     <p class="mt-2 text-sm text-zinc-400">
         Позвоните или напишите в мессенджер — подскажу по неисправности и договоримся о выезде по {{ config('landing.city') }}.
@@ -25,5 +25,18 @@
             </svg>
             Написать в WhatsApp
         </a>
+        @if (config('landing.max'))
+            <a
+                href="{{ config('landing.max') }}"
+                target="_blank"
+                rel="noopener"
+                class="flex items-center justify-center gap-2.5 rounded-xl border border-[#471AFF]/40 px-6 py-4 text-base font-semibold text-[#b9a9ff] transition hover:bg-[#471AFF] hover:text-white"
+            >
+                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+                </svg>
+                Написать в MAX
+            </a>
+        @endif
     </div>
 </aside>
