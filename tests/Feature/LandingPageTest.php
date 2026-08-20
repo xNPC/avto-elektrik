@@ -80,7 +80,7 @@ class LandingPageTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Примеры выполненных работ');
+        $response->assertSee('Фото с выездов и из мастерской');
 
         foreach (config('landing.works') as $work) {
             $response->assertSee('images/works/'.$work['src']);
