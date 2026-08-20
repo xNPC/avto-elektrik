@@ -10,19 +10,25 @@
             </div>
             <a
                 href="tel:{{ config('landing.phone_href') }}"
-                class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-amber-400 px-6 py-3 text-sm font-semibold text-zinc-950 shadow-lg shadow-amber-400/20 transition hover:bg-amber-300 sm:gap-2.5 sm:px-7 sm:py-3.5 sm:text-base"
+                class="hidden shrink-0 items-center gap-2.5 rounded-lg bg-amber-400 px-7 py-3.5 text-base font-semibold text-zinc-950 shadow-lg shadow-amber-400/20 transition hover:bg-amber-300 sm:inline-flex"
             >
-                <svg class="size-4 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
                 Позвонить
             </a>
+            <a
+                href="tel:{{ config('landing.phone_href') }}"
+                class="text-sm font-semibold text-amber-400 transition hover:text-amber-300 sm:hidden"
+            >
+                {{ config('landing.phone') }}
+            </a>
         </div>
 
-        <div class="mt-6 flex gap-3 overflow-x-auto sm:mt-8 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible lg:grid-cols-4">
+        <div class="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
             @foreach (config('landing.roadside') as $item)
-                <div class="flex shrink-0 items-center gap-3 rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 sm:block sm:shrink sm:rounded-2xl sm:p-5">
-                    <span class="grid size-10 shrink-0 place-items-center rounded-lg bg-amber-400/10 text-amber-400 sm:size-11 sm:rounded-xl">
+                <div class="rounded-xl border border-white/10 bg-zinc-950 p-4 sm:rounded-2xl sm:p-5">
+                    <span class="grid size-10 place-items-center rounded-lg bg-amber-400/10 text-amber-400 sm:size-11 sm:rounded-xl">
                         @if ($item['icon'] === 'car')
                             <svg class="size-4 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
@@ -53,7 +59,7 @@
                             </svg>
                         @endif
                     </span>
-                    <h3 class="text-sm font-semibold text-white sm:mt-4 sm:font-display sm:text-base">{{ $item['title'] }}</h3>
+                    <h3 class="mt-3 text-sm font-semibold text-white sm:mt-4 sm:font-display sm:text-base">{{ $item['title'] }}</h3>
                     <p class="mt-2 hidden text-sm leading-relaxed text-zinc-400 sm:block">{{ $item['text'] }}</p>
                 </div>
             @endforeach
